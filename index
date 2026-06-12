@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fiable Cables — Narela, Delhi | Copper Wire Manufacturers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,700&family=Barlow+Condensed:wght@600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:        #E02020;
+      --red-dark:   #B81818;
+      --red-glow:   #FF3333;
+      --charcoal:   #1A1A1A;
+      --ink:        #0D0D0D;
+      --ink-panel:  #141414;
+      --ink-raised: #1E1E1E;
+      --rule:       #2A2A2A;
+      --rule-light: #333333;
+      --off-white:  #F2F2F2;
+      --muted:      #777777;
+      --white:      #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--ink);
+      color: var(--off-white);
+      overflow-x: hidden;
+    }
+
+    /* ── LOADER ── */
+    #loader {
+      position: fixed; inset: 0; z-index: 999;
+      background: var(--ink);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 2rem;
+      transition: opacity 0.7s ease, visibility 0.7s ease;
+    }
+    #loader.hidden { opacity: 0; visibility: hidden; }
+    #loader img { width: 220px; filter: brightness(0) invert(1); }
+    .loader-bar-track { width: 220px; height: 2px; background: var(--rule); }
+    .loader-bar-fill {
+      height: 2px; width: 0;
+      background: var(--red);
+      animation: loadfill 1.5s cubic-bezier(0.4,0,0.2,1) forwards;
+    }
+    @keyframes loadfill { to { width: 100%; } }
+    .loader-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem; color: var(--muted);
+      letter-spacing: 0.22em; text-transform: uppercase;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 4%; height: 70px;
+      background: rgba(13,13,13,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-logo img {
+      height: 38px;
+      filter: brightness(0) invert(1);
+      display: block;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--off-white); }
+    .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-location {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem; color: var(--muted);
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .nav-cta {
+      background: var(--red); color: var(--white);
+      border: none; padding: 0.55rem 1.5rem;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--red-dark); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 120px 4% 80px; gap: 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      overflow: hidden; z-index: 0;
+    }
+    .hero-bg svg { width: 100%; height: 100%; }
+    .hero-left { position: relative; z-index: 1; }
+    .hero-right { position: relative; z-index: 1; }
+
+    .hero-kicker {
+      display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;
+    }
+    .kicker-line { width: 36px; height: 2px; background: var(--red); }
+    .kicker-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem; color: var(--red);
+      letter-spacing: 0.22em; text-transform: uppercase;
+    }
+
+    .hero-logo-large {
+      width: 280px; margin-bottom: 2.5rem;
+      filter: brightness(0) invert(1);
+    }
+
+    .hero-headline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.8rem, 5vw, 5rem);
+      font-weight: 800; line-height: 1.0;
+      color: var(--white); text-transform: uppercase;
+      letter-spacing: 0.02em; margin-bottom: 1.6rem;
+    }
+    .hero-headline span { color: var(--red); }
+
+    .hero-sub {
+      font-size: 1rem; font-weight: 300; line-height: 1.85;
+      color: var(--muted); max-width: 460px; margin-bottom: 2.8rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-red {
+      background: var(--red); color: var(--white);
+      border: none; padding: 0.9rem 2.2rem;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      cursor: pointer; text-decoration: none; display: inline-block;
+      transition: background 0.2s;
+    }
+    .btn-red:hover { background: var(--red-dark); }
+    .btn-ghost {
+      background: transparent; color: var(--off-white);
+      border: 1px solid var(--rule-light);
+      padding: 0.9rem 2.2rem;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      cursor: pointer; text-decoration: none; display: inline-block;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--red); color: var(--white); }
+
+    .hero-stats { display: flex; flex-direction: column; gap: 1.5px; }
+    .hsc {
+      background: var(--ink-panel);
+      border-left: 3px solid var(--red);
+      padding: 1.5rem 2rem;
+    }
+    .hsc-val {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.6rem; font-weight: 800;
+      color: var(--white); line-height: 1;
+    }
+    .hsc-val span { color: var(--red); }
+    .hsc-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem; color: var(--muted);
+      letter-spacing: 0.14em; text-transform: uppercase; margin-top: 0.3rem;
+    }
+    .hsc-sub { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; }
+
+    /* ── RED RULE ── */
+    .red-rule {
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, var(--red) 30%, var(--red-glow) 60%, transparent 100%);
+    }
+
+    /* ── SECTION BASE ── */
+    .section { padding: 100px 4%; }
+    .section-label {
+      display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;
+    }
+    .sl-line { width: 32px; height: 2px; background: var(--red); }
+    .sl-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem; color: var(--red);
+      letter-spacing: 0.22em; text-transform: uppercase;
+    }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      font-weight: 800; text-transform: uppercase;
+      line-height: 1.0; color: var(--white); margin-bottom: 1.4rem;
+      letter-spacing: 0.02em;
+    }
+    .section-title span { color: var(--red); }
+    .section-body {
+      font-size: 0.92rem; line-height: 1.9;
+      color: var(--muted); max-width: 520px;
+    }
+
+    /* ── ABOUT ── */
+    .about { background: var(--charcoal); }
+    .about-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 6rem; align-items: center;
+    }
+    .about-right { display: flex; flex-direction: column; gap: 2rem; }
+    .about-pull {
+      font-size: 1.2rem; font-weight: 500; font-style: italic;
+      color: var(--off-white); line-height: 1.6;
+      border-left: 3px solid var(--red); padding-left: 1.5rem;
+    }
+    .about-body { font-size: 0.88rem; line-height: 1.95; color: var(--muted); }
+    .about-tags { display: flex; gap: 0.7rem; flex-wrap: wrap; }
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--red); border: 1px solid var(--red);
+      padding: 0.28rem 0.75rem;
+    }
+
+    /* ── PROCESS ── */
+    .process { background: var(--ink); }
+    .process-timeline {
+      margin-top: 4rem;
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 0; position: relative;
+    }
+    .process-track {
+      position: absolute; top: 27px; left: 5%; right: 5%; height: 2px;
+      background: linear-gradient(90deg, var(--red), var(--red-glow), var(--red));
+      z-index: 0;
+    }
+    .process-step {
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; padding: 0 0.8rem; position: relative; z-index: 1;
+    }
+    .ps-node {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--ink-panel); border: 2px solid var(--red);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .ps-node svg { width: 22px; height: 22px; }
+    .ps-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.95rem; font-weight: 700; text-transform: uppercase;
+      color: var(--white); margin-bottom: 0.6rem; letter-spacing: 0.04em;
+    }
+    .ps-body { font-size: 0.74rem; line-height: 1.7; color: var(--muted); }
+
+    /* ── CATALOGUE ── */
+    .catalogue { background: var(--charcoal); }
+    .cat-header {
+      display: flex; align-items: flex-end;
+      justify-content: space-between; margin-bottom: 3rem;
+      flex-wrap: wrap; gap: 2rem;
+    }
+    .cat-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .cat-filter {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); border: 1px solid var(--rule);
+      background: transparent; padding: 0.42rem 1rem;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .cat-filter.active, .cat-filter:hover {
+      color: var(--white); background: var(--red); border-color: var(--red);
+    }
+    .cat-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px;
+    }
+    .cat-card {
+      background: var(--ink-panel);
+      padding: 2.5rem 2rem;
+      border-bottom: 3px solid transparent;
+      transition: border-color 0.25s, background 0.2s;
+      position: relative; overflow: hidden;
+    }
+    .cat-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+      background: var(--red);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .cat-card:hover::after { transform: scaleX(1); }
+    .cat-card:hover { background: var(--ink-raised); }
+
+    .cat-cat {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.56rem; color: var(--red);
+      letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem;
+    }
+    .cat-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.3rem; font-weight: 700; text-transform: uppercase;
+      color: var(--white); margin-bottom: 0.7rem; line-height: 1.2;
+      letter-spacing: 0.03em;
+    }
+    .cat-desc { font-size: 0.8rem; line-height: 1.75; color: var(--muted); margin-bottom: 1.6rem; }
+    .cat-specs {
+      display: flex; flex-direction: column; gap: 0.55rem;
+      border-top: 1px solid var(--rule); padding-top: 1.3rem; margin-bottom: 1.6rem;
+    }
+    .cat-spec-row { display: flex; justify-content: space-between; align-items: center; }
+    .cat-spec-k {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .cat-spec-v { font-size: 0.74rem; color: var(--off-white); font-weight: 500; }
+    .cat-footer { display: flex; justify-content: space-between; align-items: center; }
+    .cat-std {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.56rem; color: var(--rule-light); letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .cat-enquire {
+      font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--red); background: transparent;
+      border: none; cursor: pointer; text-decoration: none;
+      display: flex; align-items: center; gap: 0.4rem; transition: gap 0.2s;
+    }
+    .cat-enquire:hover { gap: 0.7rem; }
+
+    .cat-download-banner {
+      margin-top: 1.5px; background: var(--ink-raised);
+      border: 1px solid var(--rule);
+      padding: 2.5rem 3rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 2rem;
+    }
+    .cdb-left h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.4rem; font-weight: 700; text-transform: uppercase;
+      color: var(--white); margin-bottom: 0.3rem; letter-spacing: 0.04em;
+    }
+    .cdb-left p { font-size: 0.8rem; color: var(--muted); }
+    .cdb-right { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .cdb-dl {
+      display: flex; align-items: center; gap: 0.8rem;
+      border: 1px solid var(--rule-light);
+      padding: 0.8rem 1.4rem; text-decoration: none; transition: border-color 0.2s;
+    }
+    .cdb-dl:hover { border-color: var(--red); }
+    .cdb-dl-icon {
+      width: 32px; height: 32px; background: var(--ink-panel);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cdb-dl-name { font-size: 0.75rem; font-weight: 500; color: var(--off-white); display: block; }
+    .cdb-dl-format {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.56rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; display: block;
+    }
+
+    /* ── CERTS ── */
+    .certs { background: var(--ink); }
+    .certs-inner { display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; align-items: center; }
+    .cert-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; }
+    .cert-tile {
+      background: var(--ink-panel); padding: 1.5rem 1rem;
+      display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+      text-align: center; border-top: 2px solid transparent; transition: border-color 0.2s;
+    }
+    .cert-tile:hover { border-color: var(--red); }
+    .cert-icon {
+      width: 36px; height: 36px; background: var(--red);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.52rem; font-weight: 500; color: var(--white); letter-spacing: 0.04em;
+    }
+    .cert-tile-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+      color: var(--white); letter-spacing: 0.06em;
+    }
+    .cert-tile-body { font-size: 0.68rem; color: var(--muted); line-height: 1.5; }
+
+    /* ── WHY ── */
+    .why { background: var(--charcoal); }
+    .why-grid {
+      margin-top: 3.5rem;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px;
+    }
+    .why-card {
+      background: var(--ink-panel); padding: 2.5rem 1.8rem; position: relative;
+    }
+    .why-card::before {
+      content: attr(data-num);
+      position: absolute; top: 1.2rem; right: 1.2rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 4rem; font-weight: 800;
+      color: var(--rule); line-height: 1;
+    }
+    .why-accent { width: 28px; height: 3px; background: var(--red); margin-bottom: 1rem; }
+    .why-card h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem; font-weight: 700; text-transform: uppercase;
+      color: var(--white); margin-bottom: 0.8rem; letter-spacing: 0.04em;
+    }
+    .why-card p { font-size: 0.78rem; line-height: 1.8; color: var(--muted); }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--ink); }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; }
+    .contact-map {
+      background: var(--ink-panel); border: 1px solid var(--rule);
+      border-left: 3px solid var(--red); padding: 2rem; margin-bottom: 2rem;
+    }
+    .map-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem; color: var(--red);
+      letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.8rem;
+    }
+    .map-address { font-size: 0.88rem; line-height: 1.7; color: var(--off-white); }
+    .map-pin {
+      display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .map-pin-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--red); box-shadow: 0 0 8px var(--red);
+    }
+    .contact-channels { display: flex; flex-direction: column; gap: 1.2rem; }
+    .channel {
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      padding-bottom: 1.2rem; border-bottom: 1px solid var(--rule);
+    }
+    .channel:last-child { border-bottom: none; }
+    .channel-icon {
+      width: 36px; height: 36px; flex-shrink: 0;
+      background: var(--red);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .channel-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.56rem; color: var(--red);
+      letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.3rem;
+    }
+    .channel-val { font-size: 0.85rem; color: var(--off-white); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-field { display: flex; flex-direction: column; gap: 0.45rem; }
+    .form-field label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem; color: var(--muted);
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      background: var(--ink-panel); border: 1px solid var(--rule);
+      border-bottom: 2px solid var(--rule);
+      color: var(--off-white); padding: 0.8rem 1rem;
+      font-family: 'Barlow', sans-serif; font-size: 0.85rem;
+      outline: none; transition: border-bottom-color 0.2s;
+    }
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus { border-bottom-color: var(--red); }
+    .form-field textarea { resize: vertical; min-height: 110px; }
+    .form-field select option { background: var(--ink-panel); }
+    .form-submit {
+      background: var(--red); color: var(--white); border: none;
+      padding: 1rem 2.4rem;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      cursor: pointer; transition: background 0.2s; align-self: flex-start;
+    }
+    .form-submit:hover { background: var(--red-dark); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      border-top: 1px solid var(--rule);
+      padding: 4rem 4% 2rem;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 4rem; padding-bottom: 3rem;
+      border-bottom: 1px solid var(--rule); margin-bottom: 2rem;
+    }
+    .footer-logo img { height: 40px; filter: brightness(0) invert(1); margin-bottom: 1rem; }
+    .footer-brand-desc { font-size: 0.78rem; line-height: 1.8; color: var(--muted); max-width: 260px; }
+    .footer-col-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem; color: var(--red);
+      letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1.2rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .footer-col ul a {
+      font-size: 0.78rem; color: var(--muted); text-decoration: none; transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: var(--off-white); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-copy {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem; color: var(--muted); letter-spacing: 0.08em;
+    }
+    .footer-certs { display: flex; gap: 0.8rem; }
+    .footer-cert-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.56rem; color: var(--muted);
+      letter-spacing: 0.08em; border: 1px solid var(--rule);
+      padding: 0.22rem 0.6rem; text-transform: uppercase;
+    }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(8px);
+      display: none; align-items: center; justify-content: center; padding: 2rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--ink-panel);
+      border: 1px solid var(--rule);
+      border-top: 3px solid var(--red);
+      max-width: 540px; width: 100%; padding: 3rem; position: relative;
+    }
+    .modal-close {
+      position: absolute; top: 1rem; right: 1.2rem;
+      background: none; border: none; color: var(--muted);
+      font-size: 1.5rem; cursor: pointer; line-height: 1;
+    }
+    .modal-close:hover { color: var(--off-white); }
+    .modal-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.5rem; font-weight: 700; text-transform: uppercase;
+      color: var(--white); margin-bottom: 0.3rem; letter-spacing: 0.04em;
+    }
+    .modal-sub { font-size: 0.78rem; color: var(--muted); margin-bottom: 2rem; }
+    .modal-form { display: flex; flex-direction: column; gap: 1rem; }
+    .modal-form input, .modal-form textarea {
+      background: var(--ink-raised); border: 1px solid var(--rule);
+      border-bottom: 2px solid var(--rule);
+      color: var(--off-white); padding: 0.75rem 1rem;
+      font-family: 'Barlow', sans-serif; font-size: 0.85rem;
+      outline: none; transition: border-bottom-color 0.2s;
+    }
+    .modal-form input:focus, .modal-form textarea:focus { border-bottom-color: var(--red); }
+    .modal-form textarea { min-height: 90px; resize: vertical; }
+    .modal-submit {
+      background: var(--red); color: var(--white); border: none;
+      padding: 0.85rem 2rem;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      cursor: pointer; align-self: flex-start; transition: background 0.2s;
+    }
+    .modal-submit:hover { background: var(--red-dark); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; }
+      .about-inner, .certs-inner, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .process-timeline { grid-template-columns: 1fr 1fr; gap: 3rem; }
+      .process-track { display: none; }
+      .cat-grid { grid-template-columns: 1fr 1fr; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .cert-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (max-width: 680px) {
+      .nav-links, .nav-location { display: none; }
+      .cat-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .cert-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <img src="Fiable_Logo.jpg" alt="Fiable Cables"/>
+  <div class="loader-bar-track"><div class="loader-bar-fill"></div></div>
+  <div class="loader-label">Narela Industrial Area · Delhi</div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="enquiryModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div class="modal-title" id="modalProductName">Product Enquiry</div>
+    <div class="modal-sub">Our technical sales team responds within one business day.</div>
+    <div class="modal-form">
+      <input type="text" placeholder="Your name"/>
+      <input type="text" placeholder="Company name"/>
+      <input type="email" placeholder="Email address"/>
+      <input type="tel" placeholder="Phone / WhatsApp"/>
+      <textarea placeholder="Gauge, quantity, standards required, delivery location..."></textarea>
+      <button class="modal-submit" onclick="closeModal()">Send Enquiry →</button>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#"><img src="Fiable_Logo.jpg" alt="Fiable Cables"/></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#catalogue">Catalogue</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="nav-location">Narela, Delhi · Since 1998</span>
+    <button class="nav-cta" onclick="openModal('General Enquiry')">Request Quote</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <circle cx="1100" cy="450" r="320" stroke="#E02020" stroke-width="0.5" opacity="0.08"/>
+      <circle cx="1100" cy="450" r="260" stroke="#E02020" stroke-width="0.5" opacity="0.07"/>
+      <circle cx="1100" cy="450" r="200" stroke="#E02020" stroke-width="0.5" opacity="0.06"/>
+      <circle cx="1100" cy="450" r="140" stroke="#E02020" stroke-width="0.5" opacity="0.05"/>
+      <circle cx="1100" cy="450" r="80" stroke="#E02020" stroke-width="0.5" opacity="0.05"/>
+      <circle cx="1100" cy="450" r="30" fill="#E02020" opacity="0.04"/>
+      <line x1="780" y1="450" x2="1420" y2="450" stroke="#E02020" stroke-width="0.3" opacity="0.06"/>
+      <line x1="1100" y1="130" x2="1100" y2="770" stroke="#E02020" stroke-width="0.3" opacity="0.06"/>
+    </svg>
+  </div>
+
+  <div class="hero-left">
+    <div class="hero-kicker">
+      <div class="kicker-line"></div>
+      <div class="kicker-text">Narela Industrial Area, Delhi · Est. 1998</div>
+    </div>
+    <img class="hero-logo-large" src="Fiable_Logo.jpg" alt="Fiable Cables"/>
+    <h1 class="hero-headline">
+      India's finest<br/>
+      <span>copper wire,</span><br/>
+      engineered<br/>
+      end-to-end.
+    </h1>
+    <p class="hero-sub">
+      Fiable Cables manufactures the complete spectrum of copper wire and cable products — from bare conductor to finished cable — at our fully integrated facility in Narela, Delhi. Trusted by OEMs, contractors, and cable houses across India and beyond.
+    </p>
+    <div class="hero-actions">
+      <a href="#catalogue" class="btn-red">View Catalogue</a>
+      <a href="#contact" class="btn-ghost">Get a Quote</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="hsc">
+        <div class="hsc-val">99<span>.97%</span></div>
+        <div class="hsc-label">Copper Purity</div>
+        <div class="hsc-sub">ETP & OF grade — IEC certified</div>
+      </div>
+      <div class="hsc">
+        <div class="hsc-val">120K <span>MT</span></div>
+        <div class="hsc-label">Annual Capacity</div>
+        <div class="hsc-sub">Fully integrated Narela plant</div>
+      </div>
+      <div class="hsc">
+        <div class="hsc-val">26 <span>Yrs</span></div>
+        <div class="hsc-label">Manufacturing Since 1998</div>
+        <div class="hsc-sub">Three decades of copper expertise</div>
+      </div>
+      <div class="hsc">
+        <div class="hsc-val">40<span>+ Ctry</span></div>
+        <div class="hsc-label">Global Exports</div>
+        <div class="hsc-sub">Middle East · Africa · SE Asia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="red-rule"></div>
+
+<!-- ABOUT -->
+<section class="about section" id="about">
+  <div class="about-inner">
+    <div>
+      <div class="section-label"><div class="sl-line"></div><div class="sl-text">Our Story</div></div>
+      <h2 class="section-title">Built in <span>Narela.</span><br/>Known across India.</h2>
+      <p class="section-body">What began in 1998 as a wire drawing unit in Narela Industrial Area has grown into one of Delhi's most respected copper wire manufacturers — a fully integrated facility producing everything from bare conductor to finished insulated cable under one roof.</p>
+    </div>
+    <div class="about-right">
+      <div class="about-pull">"Copper is a living material. Every micron of its processing defines whether it carries power or fails under load."</div>
+      <div class="about-body">Narela has been the heart of Delhi's industrial manufacturing belt for decades, and Fiable Cables has grown with it. Our plant spans over 5 acres, houses 48 drawing lines, and operates continuous casting equipment that converts copper cathode into rod stock in a single controlled pass.<br/><br/>We supply bare wire, stranded conductors, winding wire, power cable, and flexible/control cables to cable manufacturers, motor winders, switchgear makers, EPC contractors, and exporters. Our laboratory team runs metallurgical verification on every production lot, and our QMS has been ISO 9001 certified for over fifteen years.</div>
+      <div class="about-tags">
+        <span class="tag">ISO 9001:2015</span>
+        <span class="tag">BIS Certified</span>
+        <span class="tag">RoHS Compliant</span>
+        <span class="tag">IEC 60228</span>
+        <span class="tag">Narela, Delhi</span>
+        <span class="tag">MSME Registered</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process section" id="process">
+  <div class="section-label"><div class="sl-line"></div><div class="sl-text">Manufacturing Process</div></div>
+  <h2 class="section-title">From <span>cathode</span><br/>to finished reel.</h2>
+  <div class="process-timeline">
+    <div class="process-track"></div>
+    <div class="process-step">
+      <div class="ps-node">
+        <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="8" width="16" height="10" rx="1" stroke="#E02020" stroke-width="1.3"/>
+          <path d="M7 8V6a4 4 0 018 0v2" stroke="#E02020" stroke-width="1.3"/>
+        </svg>
+      </div>
+      <div class="ps-title">Copper Cathode Receipt</div>
+      <div class="ps-body">Grade A copper cathode (≥99.97% Cu) received, sampled, and batch-recorded against supplier certificate.</div>
+    </div>
+    <div class="process-step">
+      <div class="ps-node">
+        <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="11" cy="11" r="7" stroke="#E02020" stroke-width="1.3"/>
+          <path d="M11 4v14M4 11h14" stroke="#E02020" stroke-width="0.9"/>
+        </svg>
+      </div>
+      <div class="ps-title">Casting & Rolling</div>
+      <div class="ps-body">Cathode melted, continuously cast, and hot-rolled into 8mm copper rod. OF variants processed under inert atmosphere.</div>
+    </div>
+    <div class="process-step">
+      <div class="ps-node">
+        <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 11 Q8 5 11 11 Q14 17 18 11" stroke="#E02020" stroke-width="1.3" fill="none"/>
+          <circle cx="4" cy="11" r="1.5" fill="#E02020"/>
+          <circle cx="18" cy="11" r="1.5" fill="#E02020"/>
+        </svg>
+      </div>
+      <div class="ps-title">Wire Drawing</div>
+      <div class="ps-body">48 lines reduce rod 8mm → 0.05mm with inline annealing to restore ductility and conductivity throughout.</div>
+    </div>
+    <div class="process-step">
+      <div class="ps-node">
+        <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="5" width="16" height="12" rx="1.5" stroke="#E02020" stroke-width="1.3"/>
+          <line x1="3" y1="11" x2="19" y2="11" stroke="#E02020" stroke-width="0.8"/>
+          <line x1="9" y1="5" x2="9" y2="17" stroke="#E02020" stroke-width="0.8"/>
+        </svg>
+      </div>
+      <div class="ps-title">Stranding & Insulation</div>
+      <div class="ps-body">Wires stranded to spec, then insulated with PVC, XLPE, LSZH, or enamel per product type and application.</div>
+    </div>
+    <div class="process-step">
+      <div class="ps-node">
+        <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 12l4 4 8-8" stroke="#E02020" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="11" cy="11" r="8" stroke="#E02020" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="ps-title">QC & Dispatch</div>
+      <div class="ps-body">100% electrical & spark testing, dimensional checks, certificate issue. Full batch traceability. 48hr despatch.</div>
+    </div>
+  </div>
+</section>
+
+<div class="red-rule"></div>
+
+<!-- CATALOGUE -->
+<section class="catalogue section" id="catalogue">
+  <div class="cat-header">
+    <div>
+      <div class="section-label"><div class="sl-line"></div><div class="sl-text">Product Catalogue</div></div>
+      <h2 class="section-title">Every form.<br/><span>Every application.</span></h2>
+    </div>
+    <div class="cat-filters">
+      <button class="cat-filter active" onclick="filterCat(this,'all')">All Products</button>
+      <button class="cat-filter" onclick="filterCat(this,'bare')">Bare Wire</button>
+      <button class="cat-filter" onclick="filterCat(this,'conductor')">Conductors</button>
+      <button class="cat-filter" onclick="filterCat(this,'cable')">Cables</button>
+      <button class="cat-filter" onclick="filterCat(this,'winding')">Winding Wire</button>
+      <button class="cat-filter" onclick="filterCat(this,'alloy')">Alloy & Speciality</button>
+    </div>
+  </div>
+
+  <div class="cat-grid" id="catalogueGrid">
+    <div class="cat-card" data-cat="bare">
+      <div class="cat-cat">Bare Wire</div>
+      <div class="cat-name">Bare Annealed Copper Wire</div>
+      <div class="cat-desc">Soft-drawn ETP copper wire for weaving, braiding, earthing, and conductor manufacture. Available in bundles and reels.</div>
+      <div class="cat-specs">
+        <div class="cat-spec-row"><span class="cat-spec-k">Gauge Range</span><span class="cat-spec-v">0.10 mm – 8.00 mm</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Purity</span><span class="cat-spec-v">≥ 99.97% Cu (ETP)</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Tensile Strength</span><span class="cat-spec-v">≤ 250 N/mm² (annealed)</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Resistivity</span><span class="cat-spec-v">≤ 17.241 nΩ·m at 20°C</span></div>
+      </div>
+      <div class="cat-footer">
+        <span class="cat-std">IS 8130 · IEC 60228 · ASTM B3</span>
+        <a class="cat-enquire" href="#" onclick="openModal('Bare Annealed Copper Wire'); return false;">Enquire →</a>
+      </div>
+    </div>
+
+    <div class="cat-card" data-cat="bare">
+      <div class="cat-cat">Bare Wire</div>
+      <div class="cat-name">Hard Drawn Copper Wire</div>
+      <div class="cat-desc">Work-hardened copper wire for overhead lines, bus bars, and high tensile strength applications without annealing.</div>
+      <div class="cat-specs">
+        <div class="cat-spec-row"><span class="cat-spec-k">Gauge Range</span><span class="cat-spec-v">1.00 mm – 8.00 mm</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Tensile Strength</span><span class="cat-spec-v">380 – 420 N/mm²</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Elongation</span><span class="cat-spec-v">≥ 1% (hard drawn)</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">DC Resistance</span><span class="cat-spec-v">Per IS 8130 Table</span></div>
+      </div>
+      <div class="cat-footer">
+        <span class="cat-std">IS 8130 · IEC 60228 · BS 4109</span>
+        <a class="cat-enquire" href="#" onclick="openModal('Hard Drawn Copper Wire'); return false;">Enquire →</a>
+      </div>
+    </div>
+
+    <div class="cat-card" data-cat="conductor">
+      <div class="cat-cat">Conductors</div>
+      <div class="cat-name">Stranded Copper Conductor</div>
+      <div class="cat-desc">Concentric and rope-lay stranded conductors for power cable manufacture. Class 1 solid through Class 6 flexible.</div>
+      <div class="cat-specs">
+        <div class="cat-spec-row"><span class="cat-spec-k">Cross Section</span><span class="cat-spec-v">0.5 mm² – 630 mm²</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Classes</span><span class="cat-spec-v">Class 1, 2, 5, 6</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Construction</span><span class="cat-spec-v">Concentric / Rope-lay / Sector</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Lay Ratio</span><span class="cat-spec-v">Per IEC 60228 / IS 8130</span></div>
+      </div>
+      <div class="cat-footer">
+        <span class="cat-std">IS 8130 · IEC 60228</span>
+        <a class="cat-enquire" href="#" onclick="openModal('Stranded Copper Conductor'); return false;">Enquire →</a>
+      </div>
+    </div>
+
+    <div class="cat-card" data-cat="conductor">
+      <div class="cat-cat">Conductors</div>
+      <div class="cat-name">Bunched / Flexible Conductor</div>
+      <div class="cat-desc">Fine-wire bunched conductors for highly flexible cables, appliance leads, welding cables, and portable equipment.</div>
+      <div class="cat-specs">
+        <div class="cat-spec-row"><span class="cat-spec-k">Cross Section</span><span class="cat-spec-v">0.5 mm² – 95 mm²</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Wire Diameter</span><span class="cat-spec-v">0.10 mm – 0.40 mm</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Class</span><span class="cat-spec-v">Class 5 & 6 (flexible)</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Finish</span><span class="cat-spec-v">Bare or Tinned</span></div>
+      </div>
+      <div class="cat-footer">
+        <span class="cat-std">IS 8130 · IEC 60228 Class 5/6</span>
+        <a class="cat-enquire" href="#" onclick="openModal('Bunched / Flexible Conductor'); return false;">Enquire →</a>
+      </div>
+    </div>
+
+    <div class="cat-card" data-cat="cable">
+      <div class="cat-cat">Cables</div>
+      <div class="cat-name">PVC Insulated House Wire</div>
+      <div class="cat-desc">Single and multi-core FR/FRLS PVC insulated wires for domestic, commercial, and light industrial wiring. BIS certified.</div>
+      <div class="cat-specs">
+        <div class="cat-spec-row"><span class="cat-spec-k">Cross Section</span><span class="cat-spec-v">1.0 mm² – 16 mm²</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Voltage Rating</span><span class="cat-spec-v">1100 V</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Insulation</span><span class="cat-spec-v">FR / FRLS PVC</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Colours</span><span class="cat-spec-v">Full IS colour range</span></div>
+      </div>
+      <div class="cat-footer">
+        <span class="cat-std">IS 694 · BIS Certified</span>
+        <a class="cat-enquire" href="#" onclick="openModal('PVC Insulated House Wire'); return false;">Enquire →</a>
+      </div>
+    </div>
+
+    <div class="cat-card" data-cat="cable">
+      <div class="cat-cat">Cables</div>
+      <div class="cat-name">XLPE Power Cable</div>
+      <div class="cat-desc">Single and multi-core XLPE insulated, PVC sheathed armoured and unarmoured cables for LV and MV power distribution.</div>
+      <div class="cat-specs">
+        <div class="cat-spec-row"><span class="cat-spec-k">Cross Section</span><span class="cat-spec-v">2.5 mm² – 400 mm²</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Voltage Rating</span><span class="cat-spec-v">1.1 kV / 3.3 kV / 11 kV</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Armour</span><span class="cat-spec-v">SWA / AWA / DSTA</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Insulation</span><span class="cat-spec-v">XLPE (cross-linked PE)</span></div>
+      </div>
+      <div class="cat-footer">
+        <span class="cat-std">IS 7098 · IEC 60502 · BIS</span>
+        <a class="cat-enquire" href="#" onclick="openModal('XLPE Power Cable'); return false;">Enquire →</a>
+      </div>
+    </div>
+
+    <div class="cat-card" data-cat="cable">
+      <div class="cat-cat">Cables</div>
+      <div class="cat-name">Flexible & Control Cable</div>
+      <div class="cat-desc">Multi-core flexible cables with LSZH, PVC, or screened jackets for industrial automation and instrumentation wiring.</div>
+      <div class="cat-specs">
+        <div class="cat-spec-row"><span class="cat-spec-k">Cores</span><span class="cat-spec-v">2C – 61C</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Cross Section</span><span class="cat-spec-v">0.5 mm² – 16 mm²</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Shielding</span><span class="cat-spec-v">Overall Al/Mylar or Cu braid</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Jacket</span><span class="cat-spec-v">PVC / LSZH / PUR</span></div>
+      </div>
+      <div class="cat-footer">
+        <span class="cat-std">IS 1554 · IEC 60227 · LSZH</span>
+        <a class="cat-enquire" href="#" onclick="openModal('Flexible & Control Cable'); return false;">Enquire →</a>
+      </div>
+    </div>
+
+    <div class="cat-card" data-cat="winding">
+      <div class="cat-cat">Winding Wire</div>
+      <div class="cat-name">Enamelled Copper Winding Wire</div>
+      <div class="cat-desc">Grade 1 & 2 enamelled round wire for motors, transformers, solenoids, and electromagnetic coils. Uniform insulation throughout.</div>
+      <div class="cat-specs">
+        <div class="cat-spec-row"><span class="cat-spec-k">Diameter Range</span><span class="cat-spec-v">0.05 mm – 3.55 mm</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Enamel Grade</span><span class="cat-spec-v">Grade 1 / Grade 2</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Thermal Class</span><span class="cat-spec-v">130 (B) / 155 (F) / 180 (H)</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Enamel Type</span><span class="cat-spec-v">Polyurethane / Polyesterimide</span></div>
+      </div>
+      <div class="cat-footer">
+        <span class="cat-std">IS 13730 · IEC 60317</span>
+        <a class="cat-enquire" href="#" onclick="openModal('Enamelled Copper Winding Wire'); return false;">Enquire →</a>
+      </div>
+    </div>
+
+    <div class="cat-card" data-cat="alloy">
+      <div class="cat-cat">Alloy & Speciality</div>
+      <div class="cat-name">Tinned Copper Wire</div>
+      <div class="cat-desc">Electrolytically or hot-dip tinned copper wire for marine, solar, and outdoor applications needing corrosion resistance.</div>
+      <div class="cat-specs">
+        <div class="cat-spec-row"><span class="cat-spec-k">Gauge Range</span><span class="cat-spec-v">0.10 mm – 4.00 mm</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Tin Coating</span><span class="cat-spec-v">Electrolytic / Hot-dip</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Solder Dip Test</span><span class="cat-spec-v">Pass per IEC 60228</span></div>
+        <div class="cat-spec-row"><span class="cat-spec-k">Purity (Cu)</span><span class="cat-spec-v">≥ 99.97% base</span></div>
+      </div>
+      <div class="cat-footer">
+        <span class="cat-std">IEC 60228 · ASTM B33 · BS 1432</span>
+        <a class="cat-enquire" href="#" onclick="openModal('Tinned Copper Wire'); return false;">Enquire →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="cat-download-banner">
+    <div class="cdb-left">
+      <h3>Download Product Catalogue</h3>
+      <p>Full technical specifications, dimension tables, and packing details for all product families.</p>
+    </div>
+    <div class="cdb-right">
+      <a class="cdb-dl" href="#" onclick="alert('Attach your PDF catalogue here.'); return false;">
+        <div class="cdb-dl-icon">
+          <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
+            <path d="M8 1v11M4 8l4 4 4-4" stroke="#E02020" stroke-width="1.4" stroke-linecap="round"/>
+            <path d="M1 14v2a1 1 0 001 1h12a1 1 0 001-1v-2" stroke="#E02020" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <div>
+          <span class="cdb-dl-name">Full Product Catalogue</span>
+          <span class="cdb-dl-format">PDF · All ranges</span>
+        </div>
+      </a>
+      <a class="cdb-dl" href="#" onclick="alert('Attach your TDS PDF here.'); return false;">
+        <div class="cdb-dl-icon">
+          <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
+            <rect x="2" y="1" width="12" height="16" rx="1" stroke="#E02020" stroke-width="1.2"/>
+            <line x1="5" y1="6" x2="11" y2="6" stroke="#E02020" stroke-width="1"/>
+            <line x1="5" y1="9" x2="11" y2="9" stroke="#E02020" stroke-width="1"/>
+            <line x1="5" y1="12" x2="8" y2="12" stroke="#E02020" stroke-width="1"/>
+          </svg>
+        </div>
+        <div>
+          <span class="cdb-dl-name">Technical Data Sheets</span>
+          <span class="cdb-dl-format">PDF · Per product</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="certs section" id="certs">
+  <div class="certs-inner">
+    <div>
+      <div class="section-label"><div class="sl-line"></div><div class="sl-text">Quality & Compliance</div></div>
+      <h2 class="section-title">Certified.<br/><span>Verified.</span><br/>Trusted.</h2>
+      <p class="section-body">Every product manufactured and tested against national and international standards. Our QMS has been independently audited and certified for over fifteen years.</p>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-tile"><div class="cert-icon">ISO</div><div class="cert-tile-name">ISO 9001:2015</div><div class="cert-tile-body">Quality Management System — independently certified</div></div>
+      <div class="cert-tile"><div class="cert-icon">BIS</div><div class="cert-tile-name">BIS / ISI Mark</div><div class="cert-tile-body">Bureau of Indian Standards — IS 694, IS 7098, IS 8130</div></div>
+      <div class="cert-tile"><div class="cert-icon">IEC</div><div class="cert-tile-name">IEC 60228</div><div class="cert-tile-body">Conductors of insulated cables — international standard</div></div>
+      <div class="cert-tile"><div class="cert-icon">RoHS</div><div class="cert-tile-name">RoHS Compliant</div><div class="cert-tile-body">Restriction of hazardous substances — export compliant</div></div>
+      <div class="cert-tile"><div class="cert-icon">ASTM</div><div class="cert-tile-name">ASTM B3 / B33</div><div class="cert-tile-body">Soft and tinned copper wire — US standard</div></div>
+      <div class="cert-tile"><div class="cert-icon">ISO</div><div class="cert-tile-name">ISO 14001</div><div class="cert-tile-body">Environmental management — certified Narela facility</div></div>
+      <div class="cert-tile"><div class="cert-icon">REACH</div><div class="cert-tile-name">REACH</div><div class="cert-tile-body">EU chemicals regulation compliant for European exports</div></div>
+      <div class="cert-tile"><div class="cert-icon">MSME</div><div class="cert-tile-name">MSME Registered</div><div class="cert-tile-body">Government of India Udyam registration</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY FIABLE -->
+<section class="why section" id="why">
+  <div class="section-label"><div class="sl-line"></div><div class="sl-text">Why Fiable Cables</div></div>
+  <h2 class="section-title">The Narela <span>difference.</span></h2>
+  <div class="why-grid">
+    <div class="why-card" data-num="01"><div class="why-accent"></div><h4>Fully Integrated Plant</h4><p>Cathode to finished cable under one roof in Narela. No outsourced drawing, no third-party stranding. Total process control and consistent quality lot-to-lot.</p></div>
+    <div class="why-card" data-num="02"><div class="why-accent"></div><h4>In-House Metallurgy Lab</h4><p>Dedicated metallurgists verify grain structure, DC resistance, tensile strength, and elongation on every production lot before despatch approval.</p></div>
+    <div class="why-card" data-num="03"><div class="why-accent"></div><h4>Full Batch Traceability</h4><p>Every reel shipped carries a traceable record from the cathode batch it originated from. Test certificates issued per lot with unique batch references.</p></div>
+    <div class="why-card" data-num="04"><div class="why-accent"></div><h4>48-Hour Despatch</h4><p>Stocked gauges despatched within 48 hours from our Narela warehouse. Custom profiles and alloy grades on negotiated lead times.</p></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact section" id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="section-label"><div class="sl-line"></div><div class="sl-text">Find Us</div></div>
+      <h2 class="section-title">Visit us in<br/><span>Narela.</span></h2>
+      <div class="contact-map">
+        <div class="map-label">Registered Address</div>
+        <div class="map-address">
+          Fiable Cables Pvt. Ltd.<br/>
+          Plot No. [XX], Narela Industrial Area<br/>
+          Narela, Delhi — 110040<br/>India
+        </div>
+        <div class="map-pin"><div class="map-pin-dot"></div>28.8553° N, 77.0932° E · Narela, Delhi</div>
+      </div>
+      <div class="contact-channels">
+        <div class="channel">
+          <div class="channel-icon"><svg width="16" height="14" viewBox="0 0 16 14" fill="none"><rect x="1" y="1" width="14" height="12" rx="1" stroke="white" stroke-width="1.2"/><path d="M1 2l7 6 7-6" stroke="white" stroke-width="1.2"/></svg></div>
+          <div><div class="channel-label">Email</div><div class="channel-val">sales@fiablecables.in<br/>technical@fiablecables.in</div></div>
+        </div>
+        <div class="channel">
+          <div class="channel-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h3l1.5 3.5-2 1.5a9 9 0 004 4l1.5-2L14 10.5V13A1.5 1.5 0 0112.5 14.5C6.1 14.5 1.5 9.9 1.5 3.5A1.5 1.5 0 013 2z" stroke="white" stroke-width="1.2"/></svg></div>
+          <div><div class="channel-label">Phone / WhatsApp</div><div class="channel-val">+91 11 XXXX XXXX<br/>+91 98XXX XXXXX</div></div>
+        </div>
+        <div class="channel">
+          <div class="channel-icon"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><circle cx="7" cy="6" r="2.5" stroke="white" stroke-width="1.2"/><path d="M7 1C4.2 1 2 3.2 2 6c0 4 5 9 5 9s5-5 5-9c0-2.8-2.2-5-5-5z" stroke="white" stroke-width="1.2"/></svg></div>
+          <div><div class="channel-label">Works</div><div class="channel-val">Narela Industrial Area, Delhi<br/>Mon–Sat · 9:00 AM – 6:00 PM IST</div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-label" style="margin-bottom:1.5rem;"><div class="sl-line"></div><div class="sl-text">Request a Quote</div></div>
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-field"><label>Name</label><input type="text" placeholder="Your full name"/></div>
+          <div class="form-field"><label>Company</label><input type="text" placeholder="Company name"/></div>
+        </div>
+        <div class="form-row">
+          <div class="form-field"><label>Email</label><input type="email" placeholder="your@email.com"/></div>
+          <div class="form-field"><label>Phone</label><input type="tel" placeholder="+91 XXXXX XXXXX"/></div>
+        </div>
+        <div class="form-field">
+          <label>Product Required</label>
+          <select>
+            <option value="">Select product</option>
+            <option>Bare Annealed Copper Wire</option>
+            <option>Hard Drawn Copper Wire</option>
+            <option>Stranded Copper Conductor</option>
+            <option>Bunched / Flexible Conductor</option>
+            <option>PVC Insulated House Wire</option>
+            <option>XLPE Power Cable</option>
+            <option>Flexible & Control Cable</option>
+            <option>Enamelled Copper Winding Wire</option>
+            <option>Tinned Copper Wire</option>
+            <option>Custom Specification</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-field"><label>Gauge / Cross Section</label><input type="text" placeholder="e.g. 1.5 mm² / 0.4 mm"/></div>
+          <div class="form-field"><label>Quantity (kg / MT)</label><input type="text" placeholder="e.g. 500 kg / 2 MT"/></div>
+        </div>
+        <div class="form-field"><label>Additional Requirements</label><textarea placeholder="Standards, delivery location, packing, timeline..."></textarea></div>
+        <button class="form-submit">Send Enquiry →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="red-rule"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo"><img src="Fiable_Logo.jpg" alt="Fiable Cables"/></div>
+      <p class="footer-brand-desc">Copper wire and cable manufacturer since 1998. Fully integrated plant at Narela Industrial Area, Delhi. Supplying India and exporting to 40+ countries.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Products</div>
+      <ul>
+        <li><a href="#catalogue">Bare Copper Wire</a></li>
+        <li><a href="#catalogue">Stranded Conductors</a></li>
+        <li><a href="#catalogue">Power & XLPE Cable</a></li>
+        <li><a href="#catalogue">Winding Wire</a></li>
+        <li><a href="#catalogue">Flexible Cable</a></li>
+        <li><a href="#catalogue">Tinned Wire</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Company</div>
+      <ul>
+        <li><a href="#about">About Fiable</a></li>
+        <li><a href="#process">Manufacturing</a></li>
+        <li><a href="#certs">Certifications</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Contact</div>
+      <ul>
+        <li><a href="#">Narela Industrial Area</a></li>
+        <li><a href="#">Delhi — 110040</a></li>
+        <li><a href="#">sales@fiablecables.in</a></li>
+        <li><a href="#">+91 11 XXXX XXXX</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Fiable Cables Pvt. Ltd. · Narela, Delhi · All rights reserved.</div>
+    <div class="footer-certs">
+      <span class="footer-cert-badge">ISO 9001</span>
+      <span class="footer-cert-badge">BIS</span>
+      <span class="footer-cert-badge">IEC</span>
+      <span class="footer-cert-badge">RoHS</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('load', () => {
+    setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1600);
+  });
+  function openModal(name) {
+    document.getElementById('modalProductName').textContent = name + ' — Enquiry';
+    document.getElementById('enquiryModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('enquiryModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('enquiryModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+  function filterCat(btn, cat) {
+    document.querySelectorAll('.cat-filter').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.cat-card').forEach(card => {
+      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+    });
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.cat-card, .why-card, .cert-tile, .process-step, .hsc').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(18px)';
+    el.style.transition = 'opacity 0.45s ease, transform 0.45s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
